@@ -19,6 +19,16 @@ dependencies {
     implementation("org.postgresql:postgresql:42.2.9")
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"]="db.scheme.project.MigrationRunner";
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
