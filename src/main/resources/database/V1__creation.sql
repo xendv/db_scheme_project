@@ -31,7 +31,6 @@ CREATE TABLE schedule
     teacher_id INT NOT NULL REFERENCES teacher (id) ON UPDATE CASCADE ON DELETE CASCADE,
     date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     theme VARCHAR NOT NULL,
-    grade_ht_max INT,
     CONSTRAINT schedule_pk PRIMARY KEY (id)
 );
 
